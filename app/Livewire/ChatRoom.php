@@ -35,7 +35,7 @@ class ChatRoom extends Component
     public function onMessageReceived($event){
         // dd($event);
         if(auth()->user()->id == $event['user']['id']){
-            $this->js("alert('message received!')");
+            // $this->js("alert('message received!')");
         }
     //    $this->js("alert('message received!')");
     }
@@ -51,7 +51,8 @@ class ChatRoom extends Component
     public function render()
     {
         return view('livewire.chat-room',[
-            'messages' => Chat::with('user')->get()
+            'messages' => Chat::with('user')->get(),
+            'users' => User::all()
         ]);
     }
 }
