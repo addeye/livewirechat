@@ -33,7 +33,9 @@ $primary-color: #333;
         width: 30%;
         display: flex;
         flex-direction: column;
+        height: calc(100vh - 140px);
         padding: 10px 5px;
+        overflow-y:auto;
         a{
             text-decoration: none;
             padding: 5px;
@@ -49,10 +51,10 @@ $primary-color: #333;
         position: relative;
 
         #chat{
-            height: calc(100vh - 120px);
-            padding: 10px;
-            overflow:scroll;
-            margin-bottom: 20px;
+            height: calc(100vh - 140px);
+            padding: 10px 10px 60px 10px;
+            overflow-y:auto;
+            // margin-bottom: 20px;
         }
 
         #sendchat{

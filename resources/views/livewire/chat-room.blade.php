@@ -9,20 +9,21 @@
         @endforeach
     </div>
     <div id="windowchat">
-        <div id="chat">
-            @foreach ($messages as $item)
-            <div>
-                <p class="fw-bold">{{ $item->message }}</p>
-                <p>
-                    <small>{{ $item->user->name }} - {{ $item->created_at->diffForHumans() }}</small>
-                </p>
-            </div>
-            @endforeach
-        </div>
+        @livewire('chat-space')
 
-        <div id="sendchat">
+        <form wire:submit="sendMessage" id="sendchat">
             <input type="text" wire:model="message">
-            <button wire:click="sendMessage">Kirim</button>
-        </div>
+            <button type="submit">Kirim</button>
+        </form>
     </div>
 </div>
+
+@script
+<script>
+    console.log("Hello World!");
+    $wire.on('ShowMessageChat', () => {
+        alert("oke");
+    });
+
+</script>
+@endscript

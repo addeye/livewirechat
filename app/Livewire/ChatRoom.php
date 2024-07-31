@@ -25,17 +25,18 @@ class ChatRoom extends Component
             'message' => $this->message
         ]);
 
-        ShowMessageChat::dispatch($this->message, auth()->user()->id);
+        event(new ShowMessageChat($this->message, auth()->user()->id));
 
         $this->message = '';
-
     }
 
     #[On('echo:room-public,ShowMessageChat')]
     public function onMessageReceived($event){
+        $this->dispatch('chat-sent');
         // dd($event);
         if(auth()->user()->id == $event['user']['id']){
-            // $this->js("alert('message received!')");
+            // $this->js("newMessage()");
+            // $this->dispatch('chat-sent');
         }
     //    $this->js("alert('message received!')");
     }
